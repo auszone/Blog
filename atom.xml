@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ausblog</title>
+  <subtitle>Yesterday You Said Tomorrow.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.hckuo.me/"/>
+  <updated>2016-02-18T04:28:48.000Z</updated>
+  <id>http://blog.hckuo.me/</id>
+  
+  <author>
+    <name>Austin Kuo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LinkIt Smart 7688 Intro. &amp; Setup</title>
+    <link href="http://blog.hckuo.me/LinkIt-Smart-7688-Intro-Setup/"/>
+    <id>http://blog.hckuo.me/LinkIt-Smart-7688-Intro-Setup/</id>
+    <published>2016-02-13T14:59:00.000Z</published>
+    <updated>2016-02-18T04:28:48.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;說明書&quot;&gt;&lt;a href=&quot;#說明書&quot; class=&quot;headerlink&quot; title=&quot;說明書&quot;&gt;&lt;/a&gt;說明書&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;官方說明書在&lt;a href=&quot;http://labs.mediatek.com/fileMedia/download/87c801b5-d1e6-4227-9a29-b5421f2955ac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裡&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.seeedstudio.com/wiki/LinkIt_Smart_7688_Duo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下簡稱7688&lt;/p&gt;
+&lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro.&quot;&gt;&lt;/a&gt;Intro.&lt;/h2&gt;&lt;p&gt;MediaTek LinkItTM is a collection of development platforms designed for the prototyping of Wearable and Internet of Things (IoT) devices. Each development platforms provide a collection of tools, hardware and related resources to —-enable developers to address various Wearable and Internet of Things (IoT) device sectors. &lt;/p&gt;
+&lt;h2 id=&quot;Setup&quot;&gt;&lt;a href=&quot;#Setup&quot; class=&quot;headerlink&quot; title=&quot;Setup&quot;&gt;&lt;/a&gt;Setup&lt;/h2&gt;&lt;h3 id=&quot;Prerequsites&quot;&gt;&lt;a href=&quot;#Prerequsites&quot; class=&quot;headerlink&quot; title=&quot;Prerequsites&quot;&gt;&lt;/a&gt;Prerequsites&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Micro USB cable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Steps&quot;&gt;&lt;a href=&quot;#Steps&quot; class=&quot;headerlink&quot; title=&quot;Steps&quot;&gt;&lt;/a&gt;Steps&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;將usb接到7688上面用來供電&lt;/li&gt;
+&lt;li&gt;一開始的時候預設是AP mode,所以必須讓你的筆電連到7688這個AP上面&lt;/li&gt;
+&lt;li&gt;打開瀏覽器進入&lt;a href=&quot;http://mylinkit.local&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mylinkit.local&lt;/a&gt; ，然後就會看到7688的網頁版介面&lt;/li&gt;
+&lt;li&gt;設定root密碼（第一次打的時候就是設定了不用確認）&lt;/li&gt;
+&lt;li&gt;建議先到網路設定把它設為work station 模式，確保你的筆電跟7688是在同一個WiFi底下&lt;ul&gt;
+&lt;li&gt;你會發現如果是AP模式的時候，你的電腦是無法上網的，找資料看hackpad的時候滿不方便的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;這時候可以利用ssh登入 &lt;code&gt;ssh root@mylinkit.local&lt;/code&gt; 使用一開始設定的密碼就可以登入了！&lt;/li&gt;
+&lt;li&gt;成功你會看到下圖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;../images/linkit7688-loginsuccess.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example&quot;&gt;&lt;/a&gt;Example&lt;/h2&gt;&lt;p&gt;在&lt;code&gt;/IoT/examples&lt;/code&gt;這個目錄底下有三個內建的範例程式，以&lt;code&gt;blink-gpio44.py&lt;/code&gt;為例子&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; mraa&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; time&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x = mraa.Gpio(&lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x.dir(mraa.DIR_OUT)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;True&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    x.write(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    time.sleep(&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    x.write(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    time.sleep(&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;mraa 是一個以 C/C++ 所寫的 Library，用來控制各種硬體協定和介面，因為支援各種語言（如：Python、JavaScript 等），所以我們可以用語言來使用這個函式庫。&lt;/li&gt;
+&lt;li&gt;GPIO-44是wifi燈號，所以我們執行這個程式就可以看到wifi燈號在閃爍&lt;ul&gt;
+&lt;li&gt;0:亮&lt;/li&gt;
+&lt;li&gt;1:暗&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Notes&quot;&gt;&lt;a href=&quot;#Notes&quot; class=&quot;headerlink&quot; title=&quot;Notes&quot;&gt;&lt;/a&gt;Notes&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Bootloader:Started by the hardware, responsible for basic initialization, loading and executing the kernel&lt;/li&gt;
+&lt;li&gt;Cross-compilation toolchain:Compiler that runs on the development machine, but generates code for the target&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.gnu.org/software/binutils/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Binutils&lt;/a&gt;when dealing with binary&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://free-electrons.com/doc/training/embedded-linux/embedded-linux-slides.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Embedded Linux System Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.facebook.com/kstan/posts/10206865897579881&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Make your own firmware practice&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;說明書&quot;&gt;&lt;a href=&quot;#說明書&quot; class=&quot;headerlink&quot; title=&quot;說明書&quot;&gt;&lt;/a&gt;說明書&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;官方說明書在&lt;a href=&quot;http://labs.mediatek.com/fileMedia/download/8
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.hckuo.me/categories/tech/"/>
+    
+    
+      <category term="LinkIt7688" scheme="http://blog.hckuo.me/tags/LinkIt7688/"/>
+    
+      <category term="embedded system" scheme="http://blog.hckuo.me/tags/embedded-system/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Docker Journey-Docker Compose</title>
+    <link href="http://blog.hckuo.me/A-Docker-Journey-Docker-Compose/"/>
+    <id>http://blog.hckuo.me/A-Docker-Journey-Docker-Compose/</id>
+    <published>2015-08-26T03:45:54.000Z</published>
+    <updated>2016-02-18T04:28:48.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro&quot;&gt;&lt;/a&gt;Intro&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://auszone.github.io/blog/A-Docker-Journey&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裡&lt;/a&gt;介紹了Docker基本的使用方式，包含&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;寫一個簡單的Dockerfile&lt;/li&gt;
+&lt;li&gt;Build一個Docker image&lt;/li&gt;
+&lt;li&gt;Link 兩個Containers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Trouble&quot;&gt;&lt;a href=&quot;#Trouble&quot; class=&quot;headerlink&quot; title=&quot;Trouble&quot;&gt;&lt;/a&gt;Trouble&lt;/h3&gt;&lt;p&gt;但我們要數個Container做連結互動的時候，手動的link就會變的很麻煩，這時候要是可以寫一個檔案，裡面描述著Container之間該怎麼互動，然後我們就可以每次都使用這個檔案來建立我們的環境，這樣的話就太好了！&lt;/p&gt;
+&lt;h2 id=&quot;Docker-Compose&quot;&gt;&lt;a href=&quot;#Docker-Compose&quot; class=&quot;headerlink&quot; title=&quot;Docker Compose&quot;&gt;&lt;/a&gt;Docker Compose&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Compose&lt;/em&gt;是一個工具用來定義還有執行多個Cotainer的應用，有了Compose我們就可以定義一個使用多個Container的應用程式。&lt;/p&gt;
+&lt;h3 id=&quot;Basic-Steps&quot;&gt;&lt;a href=&quot;#Basic-Steps&quot; class=&quot;headerlink&quot; title=&quot;Basic Steps&quot;&gt;&lt;/a&gt;Basic Steps&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;把應用程式寫成一個&lt;code&gt;Dockerfile&lt;/code&gt;如此一來我們就可以在每台機器上面都很快的建立我們的Image&lt;/li&gt;
+&lt;li&gt;定義我們期望Container互動的方式在一個&lt;code&gt;docker-compose.yml&lt;/code&gt;裡面&lt;/li&gt;
+&lt;li&gt;最後執行&lt;code&gt;docker-compose up&lt;/code&gt;，Compose就會開始並且執行你的服務。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一個&lt;code&gt;docker-compose.yml&lt;/code&gt;長的像這樣：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;web:&amp;#10;  build: .&amp;#10;  ports:&amp;#10;   - &amp;#34;5000:5000&amp;#34;&amp;#10;  volumes:&amp;#10;   - .:/code&amp;#10;  links:&amp;#10;   - redis&amp;#10;redis:&amp;#10;  image: redis&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;這份&lt;code&gt;docker-compose.yml&lt;/code&gt;裡面描述著兩個container分別是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web (參數都可以寫在裡面像是：從當下目錄的&lt;code&gt;Dockerfile&lt;/code&gt;來build這個Image， 還有host的&lt;code&gt;port:5000&lt;/code&gt; 對應 container的&lt;code&gt;port:5000&lt;/code&gt;，要link到redis這個container等等)&lt;/li&gt;
+&lt;li&gt;redis (只有給image，就是用redis這個image來開啟這個contianer，docker會自動幫你去找，如果找不到的話會回報錯誤。)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;現在只要&lt;code&gt;docker-compose up&lt;/code&gt;，Compose就會pull一個redis image，從你的&lt;code&gt;Dockefile&lt;/code&gt;build一個image，然後把所有東西開起來。&lt;/p&gt;
+&lt;h2 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;&lt;p&gt;請看&lt;a href=&quot;https://docs.docker.com/compose/install/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裡&lt;/a&gt;來安裝。&lt;/p&gt;
+&lt;h2 id=&quot;Get-Your-Hands-Dirty&quot;&gt;&lt;a href=&quot;#Get-Your-Hands-Dirty&quot; class=&quot;headerlink&quot; title=&quot;Get Your Hands Dirty&quot;&gt;&lt;/a&gt;Get Your Hands Dirty&lt;/h2&gt;&lt;p&gt;我們試著把我們&lt;a href=&quot;http://auszone.github.io/blog/A-Docker-Journey&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;上次&lt;/a&gt;手動link兩個container的工作寫成一個&lt;code&gt;docker-compose.yml&lt;/code&gt;，並且使用&lt;code&gt;docker-compose up&lt;/code&gt;，把我們的服務跑起來。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;docker-compose.yml&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;web:&amp;#10;    build: .&amp;#10;    ports:&amp;#10;    - &amp;#34;8080:8080&amp;#34;&amp;#10;    links:&amp;#10;    - mysql&amp;#10;mysql:&amp;#10;    image: mysql&amp;#10;    environment:&amp;#10;        MYSQL_ROOT_PASSWORD: password&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;只要加了這個檔案在目錄裡面就可以使用&lt;code&gt;docker-compose up&lt;/code&gt;一個指令把我們的整個服務都開啟了，是不是很棒呢？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以上只介紹了docker-compose的基本使用案例，還有一些進階的功能像是extends等等，就請看reference了！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference&quot;&gt;&lt;/a&gt;Reference&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker Compose Offical Site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://docs.docker.com/compose/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker Compose Doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro&quot;&gt;&lt;/a&gt;Intro&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://auszone.github.io/blog/A-Docker-Journey&quot; t
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.hckuo.me/categories/tech/"/>
+    
+    
+      <category term="docker" scheme="http://blog.hckuo.me/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Docker Journey</title>
+    <link href="http://blog.hckuo.me/A-Docker-Journey/"/>
+    <id>http://blog.hckuo.me/A-Docker-Journey/</id>
+    <published>2015-08-22T12:42:54.000Z</published>
+    <updated>2016-02-18T04:28:48.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro.&quot;&gt;&lt;/a&gt;Intro.&lt;/h2&gt;&lt;p&gt;最近因爲deploy的需求才讓我接觸到了Docker，說到Docker這個專案，相比大家一定對它有點耳熟，它原本是&lt;em&gt;dotCloud&lt;/em&gt;這間公司的專案，但是因為Docker實在是太火紅了就連&lt;em&gt;dotCloud&lt;/em&gt;都改名成為&lt;em&gt;Docker Inc&lt;/em&gt;了，Docker現在已經加入了Linux基金會並且遵從了 &lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Apache 2.0&lt;/a&gt; 協議，原始碼在 GitHub 上進行維護。&lt;/p&gt;
+&lt;h2 id=&quot;A-Docker-Journey&quot;&gt;&lt;a href=&quot;#A-Docker-Journey&quot; class=&quot;headerlink&quot; title=&quot;A Docker Journey&quot;&gt;&lt;/a&gt;A Docker Journey&lt;/h2&gt;&lt;p&gt;以下是我做的一個Repo裡面有Docker的基本介紹Slides，還有一個小小的Lab，下面的Demo所需要的東西都在這個Repo裡面。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/auszone/ADockerJourney&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ADockerJourney&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;&lt;p&gt;大家就看 &lt;a href=&quot;https://docs.docker.com/installation/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這裡&lt;/a&gt; 來進行安裝吧！&lt;/p&gt;
+&lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;動手寫一份簡單的Dockerfile，給一個node.js server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;FROM node:latest&amp;#10;RUN mkdir -p /webapp&amp;#10;COPY . /webapp&amp;#10;RUN cd /webapp; npm install&amp;#10;EXPOSE 8080&amp;#10;CMD [&amp;#34;node&amp;#34;, &amp;#34;/webapp/index.js&amp;#34;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我們使用 &lt;code&gt;node:latest&lt;/code&gt; 當我們的base image就可以很快速的得到一個node環境，然後我們接下來建立一個資料夾叫做 &lt;code&gt;/webapp&lt;/code&gt;，再來利用&lt;code&gt;COPY&lt;/code&gt;放我們的 &lt;code&gt;index.js&lt;/code&gt; 還有 &lt;code&gt;package.json&lt;/code&gt;，然後很重要的是要&lt;code&gt;EXPOSE 8080&lt;/code&gt;這個用意是在開啟一個對外溝通的管道，不一定是要8080只是&lt;code&gt;index.js&lt;/code&gt;裡面聽的是8080port，&lt;code&gt;CMD [&amp;quot;node&amp;quot;, &amp;quot;/webapp/index.js&amp;quot;]&lt;/code&gt;這個用途是在當我們建立一個Container卻沒有給它對應的指令時的預設指令。&lt;br&gt;接下來只要執行 &lt;code&gt;docker build -t &amp;quot;auszone/myserver&amp;quot; -f dockerfile .&lt;/code&gt;就可以把這個Dockerfile，build成一個Image了！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開啟一個MySQL Container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;docker run --name demodb -e MYSQL_ROOT_PASSWORD=password -d mysql:latest&lt;/code&gt;&lt;br&gt;利用以上的指令就可以很快速的開啟一個MySQL服務！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;部署這個node.js server 並且連到MySQL這個Container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;docker run --name server --link demodb:mysql -d -p 8080:8080 auszone/myserver&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;這裏值得一提的是&lt;code&gt;demodb:mysql&lt;/code&gt;這個&lt;code&gt;mysql&lt;/code&gt;用途是在當link一個container的時候提供的&lt;code&gt;alias&lt;/code&gt;，我這裡被link的對象是剛剛開啟的MySQL Container我們有給他一個名字叫做&lt;code&gt;demodb&lt;/code&gt;，那這個&lt;code&gt;alias&lt;/code&gt;用途何在呢？ 原因是要是我們有個這個別名的話我們開啟的server Container裡面的環境變數就會以這個&lt;code&gt;mysql&lt;/code&gt;當作前綴，也就是說我們&lt;code&gt;index.js&lt;/code&gt;裡面的 host &lt;code&gt;MYSQL_PORT_3306_TCP_ADDR&lt;/code&gt; 這個環境變數就是這麼來的，一開始的&lt;code&gt;MYSQL&lt;/code&gt;就是這個前綴，所以我們可以發現在用link的時候其實Docker就是幫你加一些環境變數，好讓你可以找到另外一個Container來與它溝通！&lt;/p&gt;
+&lt;p&gt;這個時候打開你的瀏覽器&lt;code&gt;127.0.0.1:8080&lt;/code&gt;相信就會server成功連上MySQL的訊息這時候你就成功了！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note1:&lt;code&gt;127.0.0.1&lt;/code&gt;是給linux的，如果是OS X 或是 Windows的使用者就要找到你的linux 虛擬機的ip就行了！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note2:要是有很多個Container還這樣link不是很累嗎？沒錯！以上只是一個小小的教學，然而遇到這種情況的時候這時候就用Docker Compose吧！詳見Reference.&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果大家有什麼其他想法歡迎跟我討論，或是以上內容有謬誤也請告訴我！Email: auszon3@gmail.com&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference&quot;&gt;&lt;/a&gt;Reference&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docker.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; Docker Offcial site &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://philipzheng.gitbooks.io/docker_practice/content/introduction/what.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Docker —— 從入門到實踐­》&lt;/a&gt; 很棒的Docker指南，繁體中文太甘心了！&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Q5POuMHxW-0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Introduction to Docker(Youtube)&lt;/a&gt; 一個由&lt;em&gt;Docker Inc&lt;/em&gt; CTO Solomon Hykes給的talk&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Docker Compose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro.&quot;&gt;&lt;/a&gt;Intro.&lt;/h2&gt;&lt;p&gt;最近因爲deploy的需求才讓我接觸到了Docker，說到Docker這個專案，相比大家一定對它有點耳熟，它原本
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.hckuo.me/categories/tech/"/>
+    
+    
+      <category term="docker" scheme="http://blog.hckuo.me/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一次用hexo就上手</title>
+    <link href="http://blog.hckuo.me/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%94%A8hexo%E5%B0%B1%E4%B8%8A%E6%89%8B/"/>
+    <id>http://blog.hckuo.me/第一次用hexo就上手/</id>
+    <published>2015-08-22T08:31:04.000Z</published>
+    <updated>2016-02-18T04:28:48.000Z</updated>
+    
+    <content type="html">&lt;p&gt;這是我第一次架blog，使用的東西只有&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hexo &lt;/li&gt;
+&lt;li&gt;github page&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;hexo是一個node module，使用上算是容易上手，也有很多漂亮的主題，此外這是一個台灣大大的project，MIT，一定要支持的！&lt;/p&gt;
+&lt;p&gt;附上連結：&lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;hexo&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這是我第一次架blog，使用的東西只有&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hexo &lt;/li&gt;
+&lt;li&gt;github page&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;hexo是一個node module，使用上算是容易上手，也有很多漂亮的主題，此外這是一個台灣大大的project，MIT，一
+    
+    </summary>
+    
+      <category term="random" scheme="http://blog.hckuo.me/categories/random/"/>
+    
+    
+      <category term="blog" scheme="http://blog.hckuo.me/tags/blog/"/>
+    
+      <category term="hexo" scheme="http://blog.hckuo.me/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
