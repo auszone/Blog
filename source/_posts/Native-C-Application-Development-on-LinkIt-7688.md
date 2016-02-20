@@ -9,9 +9,9 @@ categories:
 ---
 ## Introduction
 
-Developing Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different, because it's a compiled language, so we need to compile before we execute it. However, normally, compilation happens in the host is for generating executables for the host architecture and this is **native-compliation**.
+Developing Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different, because it's a compiled language, so we need to compile before we execute it. Normally, compilation that happens in the host is for generating executables for the host architecture and this is **native-compliation**.
 
-BUT, do not forget that the program we write aims for run on the board, therefore we have to generate the executables for the board (guest). So to compile a program that runs on another platform is **cross-compilation**.
+However, do not forget that the program we write aims for run on the board, therefore we have to generate the executables for the board (guest). So to compile a program that runs on another platform is **cross-compilation**.
 
 > It is of course doable to just installing a toolchain on the board, and then compile all programs on it. Well, that does sound sweet but it is not really a good way to do due to the hardware limitation.
 
