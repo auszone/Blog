@@ -59,32 +59,16 @@
 
 
 
-<meta name="description" content="說明書
-官方說明書在這裡
-wiki
-
-以下簡稱7688
-Intro.MediaTek LinkItTM is a collection of development platforms designed for the prototyping of Wearable and Internet of Things (IoT) devices. Each development platforms p">
+<meta name="description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LinkIt Smart 7688 Intro. & Setup">
-<meta property="og:url" content="http://blog.hckuo.me/LinkIt-Smart-7688-Intro-Setup/index.html">
+<meta property="og:title" content="Native C Application Development on LinkIt 7688">
+<meta property="og:url" content="http://blog.hckuo.me/Native-C-Application-Development-on-LinkIt-7688/index.html">
 <meta property="og:site_name" content="Ausblog">
-<meta property="og:description" content="說明書
-官方說明書在這裡
-wiki
-
-以下簡稱7688
-Intro.MediaTek LinkItTM is a collection of development platforms designed for the prototyping of Wearable and Internet of Things (IoT) devices. Each development platforms p">
-<meta property="og:image" content="http://blog.hckuo.me/../images/linkit7688-loginsuccess.png">
-<meta property="og:updated_time" content="2016-02-18T04:28:48.000Z">
+<meta property="og:description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
+<meta property="og:updated_time" content="2016-02-20T13:13:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LinkIt Smart 7688 Intro. & Setup">
-<meta name="twitter:description" content="說明書
-官方說明書在這裡
-wiki
-
-以下簡稱7688
-Intro.MediaTek LinkItTM is a collection of development platforms designed for the prototyping of Wearable and Internet of Things (IoT) devices. Each development platforms p">
+<meta name="twitter:title" content="Native C Application Development on LinkIt 7688">
+<meta name="twitter:description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
 
 
 
@@ -102,7 +86,7 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
   };
 </script>
 
-  <title> LinkIt Smart 7688 Intro. & Setup | Ausblog </title>
+  <title> Native C Application Development on LinkIt 7688 | Ausblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -252,7 +236,7 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
             
             
               
-                LinkIt Smart 7688 Intro. & Setup
+                Native C Application Development on LinkIt 7688
               
             
           </h1>
@@ -264,8 +248,8 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-02-13T22:59:00+08:00" content="2016-02-13">
-              2016-02-13
+            <time itemprop="dateCreated" datetime="2016-02-20T20:43:04+08:00" content="2016-02-20">
+              2016-02-20
             </time>
           </span>
 
@@ -309,47 +293,32 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
       
 
       
-        <h2 id="說明書"><a href="#說明書" class="headerlink" title="說明書"></a>說明書</h2><ul>
-<li>官方說明書在<a href="http://labs.mediatek.com/fileMedia/download/87c801b5-d1e6-4227-9a29-b5421f2955ac" target="_blank" rel="external">這裡</a></li>
-<li><a href="http://www.seeedstudio.com/wiki/LinkIt_Smart_7688_Duo" target="_blank" rel="external">wiki</a></li>
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Developing Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different, because it’s a compiled language, so we need to compile before we execute it. However, normally, compilation happens in the host is for generating executables for the host architecture and this is <strong>native-compliation</strong>.</p>
+<p>BUT, do not forget that the program we write aims for run on the board, therefore we have to generate the executables for the board (guest). So to compile a program that runs on another platform is <strong>cross-compilation</strong>.</p>
+<blockquote>
+<p>It is of course doable to just installing a toolchain on the board, and then compile all programs on it. Well, that does sound sweet but it is not really a good way to do due to the hardware limitation.</p>
+</blockquote>
+<h3 id="Prerequsites"><a href="#Prerequsites" class="headerlink" title="Prerequsites"></a>Prerequsites</h3><ul>
+<li><a href="https://wiki.openwrt.org/doc/howto/buildroot.exigence" target="_blank" rel="external">Linux</a></li>
+<li><a href="http://blog.ilay.tw/2015/07/24/在-osx-10-10-4-配置-openwrt-編譯環境/" target="_blank" rel="external">OSX</a></li>
 </ul>
-<p>以下簡稱7688</p>
-<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h2><p>MediaTek LinkItTM is a collection of development platforms designed for the prototyping of Wearable and Internet of Things (IoT) devices. Each development platforms provide a collection of tools, hardware and related resources to —-enable developers to address various Wearable and Internet of Things (IoT) device sectors. </p>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><h3 id="Prerequsites"><a href="#Prerequsites" class="headerlink" title="Prerequsites"></a>Prerequsites</h3><ul>
-<li>Micro USB cable</li>
-</ul>
-<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><ol>
-<li>將usb接到7688上面用來供電</li>
-<li>一開始的時候預設是AP mode,所以必須讓你的筆電連到7688這個AP上面</li>
-<li>打開瀏覽器進入<a href="http://mylinkit.local" target="_blank" rel="external">http://mylinkit.local</a> ，然後就會看到7688的網頁版介面</li>
-<li>設定root密碼（第一次打的時候就是設定了不用確認）</li>
-<li>建議先到網路設定把它設為work station 模式，確保你的筆電跟7688是在同一個WiFi底下<ul>
-<li>你會發現如果是AP模式的時候，你的電腦是無法上網的，找資料看hackpad的時候滿不方便的</li>
+<h3 id="Steps-standard-case"><a href="#Steps-standard-case" class="headerlink" title="Steps (standard case)"></a>Steps (standard case)</h3><ol>
+<li><ul>
+<li>Download the SDK containing toolchain from the official site.</li>
+<li>You can definitely also make from source! <strong><a href="https://github.com/MediaTek-Labs/linkit-smart-7688-feed" target="_blank" rel="external">Repo</a></strong></li>
 </ul>
 </li>
-<li>這時候可以利用ssh登入 <code>ssh root@mylinkit.local</code> 使用一開始設定的密碼就可以登入了！</li>
-<li>成功你會看到下圖</li>
+<li>Write your own C program and compile it.</li>
+<li>Copy the executable from the host to the board.</li>
+<li>Run the executable on the board.</li>
 </ol>
-<p><img src="../images/linkit7688-loginsuccess.png" alt=""></p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>在<code>/IoT/examples</code>這個目錄底下有三個內建的範例程式，以<code>blink-gpio44.py</code>為例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mraa</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">x = mraa.Gpio(<span class="number">44</span>)</span><br><span class="line">x.dir(mraa.DIR_OUT)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    x.write(<span class="number">1</span>)</span><br><span class="line">    time.sleep(<span class="number">0.2</span>)</span><br><span class="line">    x.write(<span class="number">0</span>)</span><br><span class="line">    time.sleep(<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>mraa 是一個以 C/C++ 所寫的 Library，用來控制各種硬體協定和介面，因為支援各種語言（如：Python、JavaScript 等），所以我們可以用語言來使用這個函式庫。</li>
-<li>GPIO-44是wifi燈號，所以我們執行這個程式就可以看到wifi燈號在閃爍<ul>
-<li>0:亮</li>
-<li>1:暗</li>
-</ul>
-</li>
-</ul>
-<h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ul>
-<li>Bootloader:Started by the hardware, responsible for basic initialization, loading and executing the kernel</li>
-<li>Cross-compilation toolchain:Compiler that runs on the development machine, but generates code for the target</li>
-<li><a href="http://www.gnu.org/software/binutils/" target="_blank" rel="external">Binutils</a>when dealing with binary</li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="http://free-electrons.com/doc/training/embedded-linux/embedded-linux-slides.pdf" target="_blank" rel="external">Embedded Linux System Development</a></li>
-<li><a href="https://www.facebook.com/kstan/posts/10206865897579881" target="_blank" rel="external">Make your own firmware practice</a></li>
-</ul>
+<h3 id="Steps-Customization-of-the-firmware"><a href="#Steps-Customization-of-the-firmware" class="headerlink" title="Steps: (Customization of the firmware)"></a>Steps: (Customization of the firmware)</h3><ol>
+<li>Check Package the toolchain when <code>make menuconfig</code></li>
+<li>You have to compile your own toolchain from openwrt with the config.</li>
+<li>Write your own C program and compile it.</li>
+<li>Copy the executable from the host to the board.</li>
+<li>Run the executable on the board.</li>
+</ol>
 
       
     </div>
@@ -369,17 +338,13 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/A-Docker-Journey-Docker-Compose/" rel="next" title="A Docker Journey-Docker Compose">
-                <i class="fa fa-chevron-left"></i> A Docker Journey-Docker Compose
+              <a href="/LinkIt-Smart-7688-Intro-Setup/" rel="next" title="LinkIt Smart 7688 Intro. & Setup">
+                <i class="fa fa-chevron-left"></i> LinkIt Smart 7688 Intro. & Setup
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Native-C-Application-Development-on-LinkIt-7688/" rel="prev" title="Native C Application Development on LinkIt 7688">
-                Native C Application Development on LinkIt 7688 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -504,7 +469,7 @@ Intro.MediaTek LinkItTM is a collection of development platforms designed for th
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#說明書"><span class="nav-number">1.</span> <span class="nav-text">說明書</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">2.</span> <span class="nav-text">Intro.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">3.</span> <span class="nav-text">Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequsites"><span class="nav-number">3.1.</span> <span class="nav-text">Prerequsites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">3.2.</span> <span class="nav-text">Steps</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">4.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notes"><span class="nav-number">5.</span> <span class="nav-text">Notes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequsites"><span class="nav-number">1.1.</span> <span class="nav-text">Prerequsites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-standard-case"><span class="nav-number">1.2.</span> <span class="nav-text">Steps (standard case)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-Customization-of-the-firmware"><span class="nav-number">1.3.</span> <span class="nav-text">Steps: (Customization of the firmware)</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
