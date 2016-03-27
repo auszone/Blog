@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="LinkIt7688,embedded system," />
+  <meta name="keywords" content="Linux Kernel Development,kernel,linux,scheduler,排程,核心," />
 
 
 
@@ -59,16 +59,16 @@
 
 
 
-<meta name="description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
+<meta name="description" content="Intro.We know that systems can benefits from Multitasking, On a single processor machine, this give us the illusion of multiple processes are running concurrently. On a multiprocessor machine, multita">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Native C Application Development on LinkIt 7688">
-<meta property="og:url" content="http://blog.hckuo.me/Native-C-Application-Development-on-LinkIt-7688/index.html">
+<meta property="og:title" content="How a Linux kernel schedules processes-part1">
+<meta property="og:url" content="http://blog.hckuo.me/How-a-Linux-kernel-schedules-processes-part1/index.html">
 <meta property="og:site_name" content="Ausblog">
-<meta property="og:description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
-<meta property="og:updated_time" content="2016-02-20T13:35:19.000Z">
+<meta property="og:description" content="Intro.We know that systems can benefits from Multitasking, On a single processor machine, this give us the illusion of multiple processes are running concurrently. On a multiprocessor machine, multita">
+<meta property="og:updated_time" content="2016-03-27T11:59:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Native C Application Development on LinkIt 7688">
-<meta name="twitter:description" content="IntroductionDeveloping Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different,">
+<meta name="twitter:title" content="How a Linux kernel schedules processes-part1">
+<meta name="twitter:description" content="Intro.We know that systems can benefits from Multitasking, On a single processor machine, this give us the illusion of multiple processes are running concurrently. On a multiprocessor machine, multita">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> Native C Application Development on LinkIt 7688 | Ausblog </title>
+  <title> How a Linux kernel schedules processes-part1 | Ausblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -236,7 +236,7 @@
             
             
               
-                Native C Application Development on LinkIt 7688
+                How a Linux kernel schedules processes-part1
               
             
           </h1>
@@ -248,8 +248,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-02-20T20:43:04+08:00" content="2016-02-20">
-              2016-02-20
+            <time itemprop="dateCreated" datetime="2016-03-27T13:39:25+08:00" content="2016-03-27">
+              2016-03-27
             </time>
           </span>
 
@@ -278,8 +278,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/Native-C-Application-Development-on-LinkIt-7688/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Native-C-Application-Development-on-LinkIt-7688/" itemprop="commentsCount"></span>
+                <a href="/How-a-Linux-kernel-schedules-processes-part1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="How-a-Linux-kernel-schedules-processes-part1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -300,32 +300,30 @@
       
 
       
-        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Developing Python program on 7688 is just like what we normally do on a standard computer because there is already installed Python runtime. However, making C/C++ application is different, because it’s a compiled language, so we need to compile before we execute it. Normally, compilation that happens in the host is for generating executables for the host architecture and this is <strong>native-compliation</strong>.</p>
-<p>However, do not forget that the program we write aims for run on the board, therefore we have to generate the executables for the board (guest). So to compile a program that runs on another platform is <strong>cross-compilation</strong>.</p>
+        <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><p>We know that systems can benefits from Multitasking, On a single processor machine, this give us the illusion of multiple processes are running concurrently. On a multiprocessor machine, multitasking actually enables multiple processes run at the same time, in parallel.</p>
+<h1 id="Linux’s-Process-Scheduler"><a href="#Linux’s-Process-Scheduler" class="headerlink" title="Linux’s Process Scheduler"></a>Linux’s Process Scheduler</h1><p>During the kernel version from 2.5 ~ 2.6.23, the scheduler adpoted was O(1) scheulder. However, this scheduler has several failures when scheduling latency-sensitve applications, in other words, it is not suitable for real-time computing. The replacement of O(1) scheduler occured in version 2.6.23. </p>
 <blockquote>
-<p>It is of course doable to just installing a toolchain on the board, and then compile all programs on it. Well, that does sound sweet but it is not really a good way to do due to the hardware limitation.</p>
+<p><a href="https://en.wikipedia.org/wiki/O(1)_scheduler" target="_blank" rel="external">https://en.wikipedia.org/wiki/O(1)_scheduler</a><br><a href="https://en.wikipedia.org/wiki/Real-time_computing" target="_blank" rel="external">https://en.wikipedia.org/wiki/Real-time_computing</a></p>
 </blockquote>
-<h2 id="Prerequsites"><a href="#Prerequsites" class="headerlink" title="Prerequsites"></a>Prerequsites</h2><ul>
-<li><a href="https://wiki.openwrt.org/doc/howto/buildroot.exigence" target="_blank" rel="external">Linux</a></li>
-<li><a href="http://blog.ilay.tw/2015/07/24/在-osx-10-10-4-配置-openwrt-編譯環境/" target="_blank" rel="external">OSX</a></li>
+<p>The new scheduler is CFS(Completely Fair Scheduler). Before talking about CFS’s policy, we have to know how to decide process’ prioirty first…</p>
+<h1 id="Process-Priority"><a href="#Process-Priority" class="headerlink" title="Process Priority"></a>Process Priority</h1><p>The Linux kernel implements two seperate priority ranges. </p>
+<ul>
+<li><strong>NICE</strong>, from -19 to 20, with a default of 0.</li>
 </ul>
-<h2 id="Steps-Standard-case"><a href="#Steps-Standard-case" class="headerlink" title="Steps (Standard case)"></a>Steps (Standard case)</h2><ol>
-<li><ul>
-<li>Download the SDK containing toolchain from the official site.</li>
-<li>You can definitely also make from source! <strong><a href="https://github.com/MediaTek-Labs/linkit-smart-7688-feed" target="_blank" rel="external">Repo</a></strong></li>
+<p>Large nice values means a lower prority(Being nice to others) and vice versa. Nice values are the standard priority range used in all Unix systems, although different Unix systems apply them differently.</p>
+<blockquote>
+<p><code>$ ps -el</code> Use this command to check the nice values of your processes</p>
+</blockquote>
+<ul>
+<li><strong>REAL-TIME PRIORITY</strong>, from 0 to 99.<br>Different from nice values, higher prioirty values indicates a greater priority and vice versa.</li>
 </ul>
-</li>
-<li>Write your own C program and compile it.</li>
-<li>Copy the executable from the host to the board.</li>
-<li>Run the executable on the board.</li>
-</ol>
-<h2 id="Steps-Customization-of-the-firmware"><a href="#Steps-Customization-of-the-firmware" class="headerlink" title="Steps: (Customization of the firmware)"></a>Steps: (Customization of the firmware)</h2><ol>
-<li>Check Package the toolchain when <code>make menuconfig</code></li>
-<li>You have to compile your own toolchain from openwrt with the config.</li>
-<li>Write your own C program and compile it.</li>
-<li>Copy the executable from the host to the board.</li>
-<li>Run the executable on the board.</li>
-</ol>
+<blockquote>
+<p><code>$ ps -eo state,uid,pid,ppid,rtprio,time,comm.</code><br>See the rtprio column. A value of “-” means the process is not real-time.</p>
+</blockquote>
+<p>CFS’s policy is left to part2…</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="http://www.amazon.com/Linux-Kernel-Development-3rd-Edition/dp/0672329468" target="_blank" rel="external">Linux Kernel Development</a></li>
+</ul>
 
       
     </div>
@@ -334,9 +332,17 @@
       
         <div class="post-tags">
           
-            <a href="/tags/LinkIt7688/" rel="tag">#LinkIt7688</a>
+            <a href="/tags/Linux-Kernel-Development/" rel="tag">#Linux Kernel Development</a>
           
-            <a href="/tags/embedded-system/" rel="tag">#embedded system</a>
+            <a href="/tags/kernel/" rel="tag">#kernel</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/scheduler/" rel="tag">#scheduler</a>
+          
+            <a href="/tags/排程/" rel="tag">#排程</a>
+          
+            <a href="/tags/核心/" rel="tag">#核心</a>
           
         </div>
       
@@ -345,17 +351,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/LinkIt-Smart-7688-Intro-Setup/" rel="next" title="LinkIt Smart 7688 Intro. & Setup">
-                <i class="fa fa-chevron-left"></i> LinkIt Smart 7688 Intro. & Setup
+              <a href="/Native-C-Application-Development-on-LinkIt-7688/" rel="next" title="Native C Application Development on LinkIt 7688">
+                <i class="fa fa-chevron-left"></i> Native C Application Development on LinkIt 7688
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/How-a-Linux-kernel-schedules-processes-part1/" rel="prev" title="How a Linux kernel schedules processes-part1">
-                How a Linux kernel schedules processes-part1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -487,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prerequsites"><span class="nav-number">2.</span> <span class="nav-text">Prerequsites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-Standard-case"><span class="nav-number">3.</span> <span class="nav-text">Steps (Standard case)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-Customization-of-the-firmware"><span class="nav-number">4.</span> <span class="nav-text">Steps: (Customization of the firmware)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux’s-Process-Scheduler"><span class="nav-number">2.</span> <span class="nav-text">Linux’s Process Scheduler</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Process-Priority"><span class="nav-number">3.</span> <span class="nav-text">Process Priority</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -745,9 +747,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'auszonegithubioblog';
-      var disqus_identifier = 'Native-C-Application-Development-on-LinkIt-7688/';
-      var disqus_title = 'Native C Application Development on LinkIt 7688';
-      var disqus_url = 'http://blog.hckuo.me/Native-C-Application-Development-on-LinkIt-7688/';
+      var disqus_identifier = 'How-a-Linux-kernel-schedules-processes-part1/';
+      var disqus_title = 'How a Linux kernel schedules processes-part1';
+      var disqus_url = 'http://blog.hckuo.me/How-a-Linux-kernel-schedules-processes-part1/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

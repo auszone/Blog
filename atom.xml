@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.hckuo.me/"/>
-  <updated>2016-02-20T13:35:19.000Z</updated>
+  <updated>2016-03-27T11:59:30.000Z</updated>
   <id>http://blog.hckuo.me/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How a Linux kernel schedules processes-part1</title>
+    <link href="http://blog.hckuo.me/How-a-Linux-kernel-schedules-processes-part1/"/>
+    <id>http://blog.hckuo.me/How-a-Linux-kernel-schedules-processes-part1/</id>
+    <published>2016-03-27T05:39:25.000Z</published>
+    <updated>2016-03-27T11:59:30.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro.&quot;&gt;&lt;/a&gt;Intro.&lt;/h1&gt;&lt;p&gt;We know that systems can benefits from Multitasking, On a single processor machine, this give us the illusion of multiple processes are running concurrently. On a multiprocessor machine, multitasking actually enables multiple processes run at the same time, in parallel.&lt;/p&gt;
+&lt;h1 id=&quot;Linux’s-Process-Scheduler&quot;&gt;&lt;a href=&quot;#Linux’s-Process-Scheduler&quot; class=&quot;headerlink&quot; title=&quot;Linux’s Process Scheduler&quot;&gt;&lt;/a&gt;Linux’s Process Scheduler&lt;/h1&gt;&lt;p&gt;During the kernel version from 2.5 ~ 2.6.23, the scheduler adpoted was O(1) scheulder. However, this scheduler has several failures when scheduling latency-sensitve applications, in other words, it is not suitable for real-time computing. The replacement of O(1) scheduler occured in version 2.6.23. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/O(1)_scheduler&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://en.wikipedia.org/wiki/O(1)_scheduler&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Real-time_computing&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://en.wikipedia.org/wiki/Real-time_computing&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The new scheduler is CFS(Completely Fair Scheduler). Before talking about CFS’s policy, we have to know how to decide process’ prioirty first…&lt;/p&gt;
+&lt;h1 id=&quot;Process-Priority&quot;&gt;&lt;a href=&quot;#Process-Priority&quot; class=&quot;headerlink&quot; title=&quot;Process Priority&quot;&gt;&lt;/a&gt;Process Priority&lt;/h1&gt;&lt;p&gt;The Linux kernel implements two seperate priority ranges. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NICE&lt;/strong&gt;, from -19 to 20, with a default of 0.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Large nice values means a lower prority(Being nice to others) and vice versa. Nice values are the standard priority range used in all Unix systems, although different Unix systems apply them differently.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;$ ps -el&lt;/code&gt; Use this command to check the nice values of your processes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;REAL-TIME PRIORITY&lt;/strong&gt;, from 0 to 99.&lt;br&gt;Different from nice values, higher prioirty values indicates a greater priority and vice versa.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;$ ps -eo state,uid,pid,ppid,rtprio,time,comm.&lt;/code&gt;&lt;br&gt;See the rtprio column. A value of “-” means the process is not real-time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;CFS’s policy is left to part2…&lt;/p&gt;
+&lt;h1 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Linux-Kernel-Development-3rd-Edition/dp/0672329468&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux Kernel Development&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Intro&quot;&gt;&lt;a href=&quot;#Intro&quot; class=&quot;headerlink&quot; title=&quot;Intro.&quot;&gt;&lt;/a&gt;Intro.&lt;/h1&gt;&lt;p&gt;We know that systems can benefits from Multitasking, On 
+    
+    </summary>
+    
+      <category term="tech" scheme="http://blog.hckuo.me/categories/tech/"/>
+    
+    
+      <category term="Linux Kernel Development" scheme="http://blog.hckuo.me/tags/Linux-Kernel-Development/"/>
+    
+      <category term="kernel" scheme="http://blog.hckuo.me/tags/kernel/"/>
+    
+      <category term="linux" scheme="http://blog.hckuo.me/tags/linux/"/>
+    
+      <category term="scheduler" scheme="http://blog.hckuo.me/tags/scheduler/"/>
+    
+      <category term="排程" scheme="http://blog.hckuo.me/tags/%E6%8E%92%E7%A8%8B/"/>
+    
+      <category term="核心" scheme="http://blog.hckuo.me/tags/%E6%A0%B8%E5%BF%83/"/>
+    
+  </entry>
   
   <entry>
     <title>Native C Application Development on LinkIt 7688</title>
